@@ -72,14 +72,13 @@ public class VenueController {
     }
 
     @DeleteMapping("/{venue-id}")
-    public ResponseEntity<?> deleteVenueById(@PathVariable("venue-id") Long venueId) {
+    public ResponseEntity<ApiResponse<Void>> deleteVenueById(@PathVariable("venue-id") Long venueId) {
         boolean deleted = venueService.deleteVenueById(venueId);
-        ApiResponse<Venue> response = ApiResponse.<Venue>builder()
+        ApiResponse<Void> response = ApiResponse.<Void>builder()
                 .timestamp(Instant.now())
                 .message("Delete venue with id " + venueId + " successfully")
                 .status(HttpStatus.OK)
                 .build();
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
-
 }

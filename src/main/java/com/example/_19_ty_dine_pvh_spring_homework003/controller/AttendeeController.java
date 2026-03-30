@@ -69,9 +69,9 @@ public class AttendeeController {
     }
 
     @DeleteMapping("/{attendee-id}")
-    public ResponseEntity<?> deleteAttendeeById(@PathVariable("attendee-id") @Positive Long attendeeId) {
+    public ResponseEntity<ApiResponse<Void>> deleteAttendeeById(@PathVariable("attendee-id") @Positive Long attendeeId) {
         boolean deleted = attendeeService.deleteAttendeeById(attendeeId);
-            ApiResponse<Attendee> response =ApiResponse.<Attendee>builder()
+            ApiResponse<Void> response =ApiResponse.<Void>builder()
                     .timestamp(Instant.now())
                     .message("Deleted attendee with id " + attendeeId + " successfully")
                     .status(HttpStatus.OK)

@@ -71,16 +71,13 @@ public class EventController {
     }
 
     @DeleteMapping("/{event-id}")
-    public ResponseEntity<?> deleteEventById(@PathVariable("event-id") @Positive Long eventId) {
+    public ResponseEntity<ApiResponse<Void>> deleteEventById(@PathVariable("event-id") @Positive Long eventId) {
         boolean deleted = eventService.deleteEventById(eventId);
-        ApiResponse<Event> response = ApiResponse.<Event>builder()
+        ApiResponse<Void> response = ApiResponse.<Void>builder()
                 .timestamp(Instant.now())
                 .message("Deleted event with id " + eventId + "successfully")
                 .status(HttpStatus.OK)
                 .build();
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
-
-
-
 }

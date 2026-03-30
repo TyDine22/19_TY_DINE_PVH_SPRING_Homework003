@@ -26,6 +26,7 @@ public class EventRequest {
     private LocalDate eventDate;
 
     @NotNull(message = "Venue Id cannot be null")
+    @Positive(message = "Venue Id must be greater than 0")
     private Long venueId;
 
     @NotEmpty(message = "Attendee list cannot be empty")
