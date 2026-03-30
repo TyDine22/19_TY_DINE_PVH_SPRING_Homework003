@@ -1,9 +1,7 @@
 package com.example._19_ty_dine_pvh_spring_homework003.repository;
 
 import com.example._19_ty_dine_pvh_spring_homework003.model.entity.Attendee;
-import com.example._19_ty_dine_pvh_spring_homework003.model.entity.Event;
 import org.apache.ibatis.annotations.*;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 

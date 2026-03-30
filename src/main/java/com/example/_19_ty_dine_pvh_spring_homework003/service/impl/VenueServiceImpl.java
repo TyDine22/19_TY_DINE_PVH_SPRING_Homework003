@@ -8,7 +8,6 @@ import com.example._19_ty_dine_pvh_spring_homework003.model.request.VenueRequest
 import com.example._19_ty_dine_pvh_spring_homework003.repository.EventRepository;
 import com.example._19_ty_dine_pvh_spring_homework003.repository.VenueRepository;
 import com.example._19_ty_dine_pvh_spring_homework003.service.VenueService;
-import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;

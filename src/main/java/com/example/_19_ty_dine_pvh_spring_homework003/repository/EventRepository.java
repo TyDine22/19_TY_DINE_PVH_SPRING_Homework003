@@ -2,7 +2,6 @@ package com.example._19_ty_dine_pvh_spring_homework003.repository;
 
 import com.example._19_ty_dine_pvh_spring_homework003.model.entity.Event;
 import com.example._19_ty_dine_pvh_spring_homework003.model.request.EventRequest;
-import jakarta.validation.constraints.Pattern;
 import org.apache.ibatis.annotations.*;
 
 import java.time.LocalDate;

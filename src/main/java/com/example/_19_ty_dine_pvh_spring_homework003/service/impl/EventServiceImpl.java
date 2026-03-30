@@ -57,14 +57,18 @@ public class EventServiceImpl implements EventService {
             throw new NotFoundException("Venue with id " + eventRequest.getVenueId() + " not found");
         }
 
-        Event event = eventRepository.addEvent(eventRequest);
         for (Long attendeeId : eventRequest.getAttendees()) {
             Attendee attendee = attendeeRepository.getAttendeeById(attendeeId);
             if (attendee == null) {
                 throw new NotFoundException("Attendee with id " + attendeeId + " not found");
             }
+        }
+
+        Event event = eventRepository.addEvent(eventRequest);
+        for (Long attendeeId : eventRequest.getAttendees()) {
             eventAttendeeRepository.addAttendeeAndEvent(attendeeId, event.getEventId());
         }
+
         return eventRepository.getEventById(event.getEventId());
     }
 
@@ -93,14 +97,16 @@ public class EventServiceImpl implements EventService {
             throw new ConflictException("Event name already exists on this date");
         }
 
-        eventRepository.updateEventById(eventId, eventRequest);
-
-        eventAttendeeRepository.deleteEventAttendeeById(eventId);
         for (Long attendeeId : eventRequest.getAttendees()) {
             Attendee attendee = attendeeRepository.getAttendeeById(attendeeId);
             if (attendee == null) {
                 throw new NotFoundException("Attendee with id " + attendeeId + " not found");
             }
+        }
+
+        eventRepository.updateEventById(eventId, eventRequest);
+        eventAttendeeRepository.deleteEventAttendeeById(eventId);
+        for (Long attendeeId : eventRequest.getAttendees()) {
             eventAttendeeRepository.addAttendeeAndEvent(attendeeId, eventId);
         }
 

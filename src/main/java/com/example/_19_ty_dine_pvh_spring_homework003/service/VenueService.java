@@ -16,4 +16,3 @@ public interface VenueService {
 
     boolean deleteVenueById(Long venueId);
 }
-

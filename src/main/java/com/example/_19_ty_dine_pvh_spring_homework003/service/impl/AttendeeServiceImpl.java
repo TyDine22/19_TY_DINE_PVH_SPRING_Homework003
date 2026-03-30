@@ -46,7 +46,6 @@ public class AttendeeServiceImpl implements AttendeeService {
             throw new NotFoundException("Attendee with id " + attendeeId + " not found");
         }
         return attendee;
-
     }
 
     @Override
